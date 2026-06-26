@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import MessageBubble from './MessageBubble';
 
-const API_BASE = '';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://rag-backend-ubb5.onrender.com';
 
 const SAMPLE_QUESTIONS = [
   {
@@ -140,7 +140,7 @@ export default function ChatInterface() {
         const msgs = [...prev.messages];
         msgs[msgs.length - 1] = {
           role: 'ai',
-          content: 'Unable to connect to the server. Please ensure the backend is running on port 8000.',
+          content: 'Unable to connect to the server. Please try again in a moment.',
           confidence: 0,
         };
         const updated = { ...prev, messages: msgs };
